@@ -31,7 +31,7 @@ export class ContactModel {
   }
   async add(newcontact: Contact): Promise<ObjectId> {
       if(newcontact.Phone == undefined || newcontact.Phone.match(/^ *$/))
-        throw "the phone number is requerd !"
+        throw "the phone number is required !"
       const res = await this.contact.insertOne(newcontact)
       return res.insertedId;
   }
@@ -44,7 +44,7 @@ export class ContactModel {
   }
   async delete(id:ObjectId): Promise<void> {
     try {
-      await this.contact.deleteOne({"_id":id});
+      await this.contact.deleteOne({"_ide":id});
     } catch (error) {
       throw error;
     }

@@ -2,11 +2,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
-import { User } from "../types";
-type verifiedUser = {
-  username: string;
-  token: string;
-};
+import { User,verifiedUser } from "../types";
 dotenv.config();
 const users: User[] = [
   {

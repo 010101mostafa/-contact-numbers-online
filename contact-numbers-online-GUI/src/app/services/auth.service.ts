@@ -12,11 +12,12 @@ export class AuthService {
     this._isauth.next(state);
   }
   isauth: Observable<boolean> = this._isauth.asObservable();
+  token:String|null="";
   authenticate() {
-    const token = localStorage.getItem("token")
-    if (token == null || token.match(/^ *$/))
+    this.token = localStorage.getItem("token")
+    if (this.token == null || this.token.match(/^ *$/))
       this.setAuthState(false);
     else
-      this.setAuthState(true);
+       this.setAuthState(true);
   }
 }
