@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
 import { ToolbarComponent } from './component/toolbar/toolbar.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
+import { ContactModule } from './contact/contact.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NotFoundComponent } from './component/not-found/not-found.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UserModule
+    UserModule,
+    ContactModule
   ],
   providers: [],
   bootstrap: [AppComponent]
