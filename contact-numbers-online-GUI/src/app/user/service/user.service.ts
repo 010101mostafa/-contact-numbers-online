@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { verifiedUser } from '../../types';
@@ -11,7 +11,7 @@ import { verifiedUser } from '../../types';
 export class UerService {
 
   constructor(private httpClient:HttpClient) { }
-  login(username:String,password:String):Observable<verifiedUser>{
+  login(username:string,password:string):Observable<verifiedUser>{
     return this.httpClient.post<verifiedUser>("/user/login",{username,password})
   }
 }
