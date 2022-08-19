@@ -6,8 +6,9 @@ export type Contact = {
   Phone:string,
   Address:string,
   Notes:string,
+  isEditing:boolean
 };
 export type User = {
-  username:string;
-  password: string;
+  username:string,
+  password: string
 };

@@ -38,7 +38,8 @@ ___
 | :---------------------------------------- | :----------------------------------------------------------------------- |
 | [get]/                                         | show hello massage        |
 | [post]/user/login                         | login user py id and password   |
-| [get]/contact/                         | get all contactlist  [token required]    |
+| [get]/contact/                        | get all contactlist  [token required]    |
+| [get]/contact/:lId/lim                | get #(lim) contactlist item after (lId)  [token required]    |
 | [post]/contact/     | create a new contact [token required]     |
 | [put]/contact/    | update contact  [token required] |
 | [delete]/contact/:_id |  delete contact from contact list [token required] |

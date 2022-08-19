@@ -17,6 +17,18 @@ export class ContactModel {
       throw error;
     }
   }
+  async get(lastId:ObjectId,limit:number): Promise<Contact[]> {
+    try {
+      const cursor =await this.contact.find({"_id":{"$gt":lastId}},{ sort: { "_id": 1 }, "limit": limit });
+      let data:Contact[]=[]
+      await cursor.forEach(i=>{
+        data.push(i);
+      });
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
   async add(newcontact: Contact): Promise<ObjectId> {
       if(newcontact.Phone == undefined || newcontact.Phone.match(/^ *$/))
         throw "the phone number is requerd !"
@@ -36,5 +48,8 @@ export class ContactModel {
     } catch (error) {
       throw error;
     }
+  }
+  async editing(id:ObjectId,isEditing:boolean): Promise<void> {
+      await this.contact.updateOne({"_id":id},{"$set":{"isEditing":isEditing}});
   }
 }
