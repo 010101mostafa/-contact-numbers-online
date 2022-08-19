@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Contact } from '../../../types';
 
 @Component({
   selector: 'app-list',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class ListComponent implements OnInit {
 
   constructor() { }
-
+  contacts:Contact[]=[];
   ngOnInit(): void {
   }
 

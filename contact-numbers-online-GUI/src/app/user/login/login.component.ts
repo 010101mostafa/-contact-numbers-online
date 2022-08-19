@@ -21,13 +21,15 @@ export class LoginComponent implements OnInit {
       username: new FormControl("", [Validators.required]),
       password: new FormControl("", [Validators.required, Validators.minLength(3)])
     });
+    localStorage.removeItem("token");
+    this.authService.setAuthState(false);
   }
   onSubmit(username: string, password: string) {
     this.uerService.login(username, password).subscribe(
       async data => {
         localStorage.setItem("token", data.token);
         this.authService.setAuthState(true);
-        //this.router.navigateByUrl("/contact");
+        this.router.navigateByUrl("/contact");
       },
       err => {
         this.error.msg = err.toString();
