@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("token", data.token);
         this.authService.setAuthState(true);
         this.router.navigateByUrl("/contact");
+        this.error.has=false
       },
       err => {
         this.error.msg = err.error.toString();

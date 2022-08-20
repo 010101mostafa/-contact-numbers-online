@@ -1,5 +1,5 @@
 <h3 class="alert alert-primary text-center">
-    add someone to your contact list
+    {{isNew?"add someone to your contact list":"editing "+contact.Name+" deta"}}
 </h3>
 <main class="card bg-light center p-5 m-5 ">
     <div *ngIf="error.has" class="alert alert-danger">
@@ -7,22 +7,22 @@
     </div>
     <form class="form" [formGroup]="form">
 
-        <input class="form-control form-control-lg  m-1" [(ngModel)]="contact.Name" #name="ngModel" id="name" placeholder="enter the name" />
+        <input class="form-control form-control-lg  m-1" [(ngModel)]="contact.Name"  formControlName="name" placeholder="enter the name" />
         <div *ngIf="name.invalid &&name.touched" class="alert alert-danger">the name is required</div>
 
-        <input class="form-control form-control-lg  m-1" [(ngModel)]="contact.Phone" #phone="ngModel" id="phone" placeholder="phone number"  />
-        <div *ngIf="phone.invalid &&(phone.dirty || phone.touched)" class="alert alert-danger" >
+        <input class="form-control form-control-lg  m-1" [(ngModel)]="contact.Phone" formControlName="phone" placeholder="phone number"  />
+        <div *ngIf="phone.invalid &&(phone.dirty || phone.touched)"  class="alert alert-danger" >
             <div *ngIf="phone.errors?.['required'] "> please enter the phone number</div>
             <div *ngIf="phone.errors?.['pattern']" >please enter 11 number </div>
         </div>
 
-        <input class="form-control form-control-lg  m-1" [(ngModel)]="contact.Address" #address="ngModel" id="address" type="address"  placeholder="address"  />
+        <input class="form-control form-control-lg  m-1" [(ngModel)]="contact.Address"  formControlName="address" type="address"  placeholder="address"  />
         
-        <textarea  class="form-control  form-control-lg  m-1" placeholder="enter a notes here ... " [(ngModel)]="contact.Notes" #notes="ngModel" id="notes"  ></textarea>
+        <textarea  class="form-control  form-control-lg  m-1" placeholder="enter a notes here ... " [(ngModel)]="contact.Notes"  formControlName="notes"  ></textarea>
         
 
         <div class="d-flex flex-row-reverse">
-            <button class="btn btn-primary w-50 p-2 " [disabled]="form.invalid" (click)="onSubmit()"> add </button>
+            <button class="btn btn-primary w-50 p-2 " [disabled]="form.invalid" (click)="onSubmit()"> {{isNew?"add":"update"}} </button>
         </div>
     </form>
 </main>

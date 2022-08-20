@@ -1,5 +1,7 @@
-import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Contact } from "../../../types"
+import { Router } from '@angular/router';
+import { ContactService } from '../../services/contact.service';
 
 @Component({
   selector: '[app-one]',
@@ -7,20 +9,28 @@ import { Contact } from "../../../types"
   styleUrls: ['./one.component.css']
 })
 export class OneComponent implements OnInit {
-  @Input() contact:Contact;
-  // @Output() deleted:EventEmitter<number>;
-  // @Output() edit:EventEmitter<void>
+  @Input() contact: Contact = {} as Contact;
+  @Output() deleted: EventEmitter<number> = new EventEmitter<number>();;
 
-  constructor() { 
-    this.contact={
-      Name:"MOSTAFA safwat",
-      Address:"el saf",
-      Phone:"01224135425",
-      Notes:"kjladskjfljadf adksfajdlfj lasdkfjaldkfj dslfmdaslf"
-    }as Contact;
+  constructor(private router: Router, private contactService: ContactService) {
+  }
+  Delete() {
+    this.contactService.delete(this.contact._id)
+      .subscribe(
+        data => {
+          console.log("deleted  "+this.contact._id+"   "+this.contact.Name);
+          this.deleted.emit();
+        },
+        err => {
+          console.log(err);
+        });
+  }
+  Edit() {
+    this.router.navigate(["/contact/edit"], { queryParams: this.contact });
   }
 
   ngOnInit(): void {
+
   }
 
 }

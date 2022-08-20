@@ -5,7 +5,6 @@ import { HTTP_INTERCEPTORS} from '@angular/common/http'
 
 import { routes } from './contact-routing.const';
 import { AddComponent } from './components/add/add.component';
-import { EditComponent } from './components/edit/edit.component';
 import { OneComponent } from './components/one/one.component';
 import { ListComponent } from './components/list/list.component';
 import { AuthInterceptor } from './interseptors/auth.interceptor';
@@ -16,7 +15,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AddComponent,
-    EditComponent,
     OneComponent,
     ListComponent
   ],

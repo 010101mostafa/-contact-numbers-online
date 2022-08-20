@@ -21,9 +21,9 @@ export class ContactService {
   update(newContact: Contact): Observable<void> {
     return this.httpClient.put<void>('/contact/', newContact);
   }
-  count(obj?: object): Observable<Contact[]> {
+  count(obj?: object): Observable<{count:number}> {
     if (obj == undefined)
       obj = {} 
-    return this.httpClient.post<Contact[]>(`/contact/count`, obj);
+    return this.httpClient.post<{count:number}>(`/contact/count`, obj);
   }
 }

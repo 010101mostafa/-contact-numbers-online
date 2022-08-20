@@ -31,9 +31,9 @@ export class ContactModel {
       throw error;
     }
   }
-  async delete(id: ObjectId): Promise<void> {
+  async delete(id: any): Promise<void> {
     try {
-      await this.contact.deleteOne({ "_ide": id });
+      await this.contact.deleteOne({ "_id": id });
     } catch (error) {
       throw error;
     }

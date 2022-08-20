@@ -13,20 +13,20 @@
         </tr>
     </Thead>
     <tbody>
-        <tr app-one></tr>
-        <tr app-one *ngFor="let contact of contacts" [contact]="contact"></tr>
+        <tr app-one *ngFor="let contact of contacts" [contact]="contact" (deleted)="ngOnInit()"> </tr>
     </tbody>
 </table>
+
 <div class="d-flex flex-row justify-content-center p-0 alert ">
     <ul class="pagination m-0">
         <li class="page-item" [class.disabled]="page==0||Npages<=1" >
-            <a class="page-link" href="#" tabindex="-1">Previous</a>
+            <a class="page-link" routerLink="/contact/{{page-1}}"  tabindex="-1">Previous</a>
         </li>
-        <li class="page-item " [class.active]="page==i" *ngFor="let item of [].constructor(Npages) ;let i = index" >
-            <a class="page-link" href="#">{{i}} <span class="sr-only">(current)</span></a>
+        <li class="page-item " [class.active]="page==i" *ngFor="let i of array;" >
+            <a class="page-link"  routerLink="/contact/{{i}}" >{{i}} <span class="sr-only">(current)</span></a>
         </li>
         <li class="page-item" [class.disabled]="page==Npages||Npages<=1" >
-            <a class="page-link" href="#">Next</a>
+            <a class="page-link"  routerLink="/contact/{{page+1}}" >Next</a>
         </li>
     </ul>
 </div>
