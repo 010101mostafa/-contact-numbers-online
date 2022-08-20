@@ -10,8 +10,8 @@
         <div *ngIf="form.controls['username'].invalid &&form.controls['username'].touched" class="alert alert-danger" >the username is required</div>
         <input class="form-control form-control-lg  m-1" formControlName="password" #password id="password" type="password" placeholder="Password"  />
         <div *ngIf="form.controls['password'].invalid &&(form.controls['password'].dirty || form.controls['password'].touched)" class="alert alert-danger" >
-            <div *ngIf="form.controls['password'].errors?.['required'] "> plase enter the password</div>
-            <div *ngIf="form.controls['password'].errors?.['minlength']" >minmum length is 3 char</div>
+            <div *ngIf="form.controls['password'].errors?.['required'] "> please enter the password</div>
+            <div *ngIf="form.controls['password'].errors?.['minlength']" >minimum length is 3 char</div>
         </div>
 
         <div class="d-flex flex-row-reverse">

@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl("/contact");
       },
       err => {
-        this.error.msg = err.toString();
+        this.error.msg = err.error.toString();
         console.log(err);
         this.error.has = true;
       }

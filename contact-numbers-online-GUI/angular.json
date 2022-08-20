@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/fwd-storefront-gui",
+            "outputPath": "dist/contact-numbers-online-GUI",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "FWD-Storefront-GUI:build:production"
+              "browserTarget": "contact-numbers-online:build:production"
             },
             "development": {
-              "browserTarget": "FWD-Storefront-GUI:build:development"
+              "browserTarget": "contact-numbers-online:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "FWD-Storefront-GUI:build"
+            "browserTarget": "contact-numbers-online-GUI:build"
           }
         },
         "test": {
@@ -105,5 +105,5 @@
       }
     }
   },
-  "defaultProject": "FWD-Storefront-GUI"
+  "defaultProject": "contact-numbers-online-GUI"
 }

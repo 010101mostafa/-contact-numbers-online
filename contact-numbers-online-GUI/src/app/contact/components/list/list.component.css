@@ -117,3 +117,9 @@
     -moz-border-radius: 15px;
     border-radius: 15px;
 }
+::placeholder {
+    color: white;
+}
+.form-control{
+    border: 0;
+}

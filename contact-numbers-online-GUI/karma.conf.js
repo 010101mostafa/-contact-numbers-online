@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/fwd-storefront-gui'),
+      dir: require('path').join(__dirname, './coverage/contact-numbers-online-GUI'),
       subdir: '.',
       reporters: [
         { type: 'html' },
