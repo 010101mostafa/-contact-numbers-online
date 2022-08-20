@@ -4,14 +4,13 @@ ___
 ### - the environment variables <b> example </b> (.env file)
 
 ```json
-NODE_ENV=dev
-DB_NAME=contact
-DB_USER=mostafa 
-DB_PASSWORD=mostafa
-HASH_SALT=5
-HASH_KEY=mostafaKEY
-TOKEN_SECRET=mostafaTOKEN_SECRET
-TEST_DB_NAME=ContactTest
+NODE_ENV=
+DB_USER= 
+DB_PASSWORD=
+HASH_SALT=
+HASH_KEY=
+TOKEN_SECRET=
+TEST_DB_NAME=
 ``` 
 
 ___
