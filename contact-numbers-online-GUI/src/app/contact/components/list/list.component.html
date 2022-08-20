@@ -1,12 +1,12 @@
 <table class="table table-striped table-bordered table-hover m-0">
     <Thead>
         <tr form class="thead-dark">
-            <th scope="col"><input class="form-control text-bg-dark " placeholder=" Name " /></th>
-            <th scope="col"><input class="form-control text-bg-dark " placeholder="Phone Number" /></th>
-            <th scope="col"><input class="form-control text-bg-dark " placeholder=" Address " /></th>
-            <th scope="col"><input class="form-control text-bg-dark " placeholder=" Notes " /></th>
+            <th scope="col"><input class="form-control text-bg-dark " [(ngModel)]="search.Name"  placeholder=" Name " /></th>
+            <th scope="col"><input class="form-control text-bg-dark " [(ngModel)]="search.Phone"  placeholder="Phone Number" /></th>
+            <th scope="col"><input class="form-control text-bg-dark " [(ngModel)]="search.Address"  placeholder=" Address " /></th>
+            <th scope="col"><input class="form-control text-bg-dark " [(ngModel)]="search.Notes"  placeholder=" Notes " /></th>
             <th scope="col">
-                <button class="btn btn-outline-light">
+                <button class="btn btn-outline-light" (click)="searchGo()" >
                     search
                 </button>
             </th>

@@ -1,6 +1,6 @@
 import { Contact } from "../types";
 import { db } from "../helpers/database";
-import { ObjectId, FindCursor } from "mongodb";
+import { ObjectId } from "mongodb";
 import { resolve } from "url";
 export class ContactModel {
 
@@ -8,9 +8,9 @@ export class ContactModel {
   async index(): Promise<Contact[]> {
     return await this.contact.find({}).toArray();
   }
-  async get(index: number, limit: number, obj: any): Promise<Contact[]> {
+  async get(index: number, limit: number, search: Contact): Promise<Contact[]> {
     try {
-      return await this.contact.find(obj)
+      return await this.contact.find(this.toRE(search))
         .sort({ "_id": 1 })
         .skip(index)
         .limit(limit).toArray();
@@ -26,7 +26,7 @@ export class ContactModel {
   }
   async edit(_contact: Contact): Promise<void> {
     try {
-      await this.contact.updateOne({ "_id": _contact._id }, { "$set": _contact })
+      await this.contact.updateOne({ "_id": _contact._id }, { "$set": this.getObj(_contact) })
     } catch (error) {
       throw error;
     }
@@ -38,11 +38,34 @@ export class ContactModel {
       throw error;
     }
   }
-  async editing(id: ObjectId, isEditing: boolean): Promise<void> {
+  async editing(id: any, isEditing: boolean): Promise<void> {
     await this.contact.updateOne({ "_id": id }, { "$set": { "isEditing": isEditing } });
   }
-  async count(obj: any): Promise<number> {
-    return await this.contact.find(obj).count();
+  async count(search: Contact): Promise<number> {
+    return await this.contact.find(this.getObj(search)).count();
   }
-
+  private getObj(search: Contact): any {
+    let obj: any = {}
+    if (search.Name && !search.Name.match(/^ *$/))
+      obj.Name = search.Name;
+    if (search.Phone && !search.Phone.match(/^ *$/))
+      obj.Phone = search.Phone;
+    if (search.Address && !search.Address.match(/^ *$/))
+      obj.Address = search.Address;
+    if (search.Notes && !search.Notes.match(/^ *$/))
+      obj.Notes = search.Notes;
+    return obj;
+  }
+  private toRE(search: Contact): any {
+    let obj: any = {}
+    if (search.Name && !search.Name.match(/^ *$/))
+      obj.Name = new RegExp(search.Name,"i");
+    if (search.Phone && !search.Phone.match(/^ *$/))
+      obj.Phone = new RegExp(search.Phone,'i');;
+    if (search.Address && !search.Address.match(/^ *$/))
+      obj.Address = new RegExp(search.Address,"i");;
+    if (search.Notes && !search.Notes.match(/^ *$/))
+      obj.Notes = new RegExp(search.Notes,"i");;
+    return obj;
+  }
 }
