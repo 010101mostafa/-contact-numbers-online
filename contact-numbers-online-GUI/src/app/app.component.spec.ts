@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'FWD-Storefront-GUI'`, () => {
+  it(`should have as title 'contact-numbers-online'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('FWD-Storefront-GUI');
+    expect(app.title).toEqual('contact-numbers-online');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('FWD-Storefront-GUI app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('contact-numbers-online app is running!');
   });
 });
