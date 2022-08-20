@@ -9,6 +9,7 @@ import { EditComponent } from './components/edit/edit.component';
 import { OneComponent } from './components/one/one.component';
 import { ListComponent } from './components/list/list.component';
 import { AuthInterceptor } from './interseptors/auth.interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,9 @@ import { AuthInterceptor } from './interseptors/auth.interceptor';
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers:[
     {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor,multi:true}

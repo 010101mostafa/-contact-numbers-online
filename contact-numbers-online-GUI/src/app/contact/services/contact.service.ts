@@ -7,12 +7,10 @@ import { Contact } from '../../types';
 })
 export class ContactService {
   constructor(private httpClient: HttpClient) { }
-  get(lId: string, limit: number, obj?: object): Observable<Contact[]> {
-    if (obj == null) {
-      return this.httpClient.get<Contact[]>(`/contact/${lId}/${limit}`);
-    } else {
-      return this.httpClient.post<Contact[]>(`/contact/${lId}/${limit}`, obj);
-    }
+  get(index: number, limit: number, obj?: object): Observable<Contact[]> {
+    if (obj == undefined)
+      obj = {}
+    return this.httpClient.post<Contact[]>(`/contact/${index}/${limit}`, obj);
   }
   add(newContact: Contact): Observable<void> {
     return this.httpClient.post<void>('/contact/', newContact);
@@ -22,5 +20,10 @@ export class ContactService {
   }
   update(newContact: Contact): Observable<void> {
     return this.httpClient.put<void>('/contact/', newContact);
+  }
+  count(obj?: object): Observable<Contact[]> {
+    if (obj == undefined)
+      obj = {} 
+    return this.httpClient.post<Contact[]>(`/contact/count`, obj);
   }
 }

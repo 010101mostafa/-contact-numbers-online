@@ -13,13 +13,9 @@ export class ContactControl{
   }
   get=async (req: Request, res: Response): Promise<void>=>{
     try {
-      try {
-        var lId=new ObjectId(req.params.lId);
-      } catch (error) {
-        lId=new ObjectId(Number(req.params.lId));
-      }
+      const index=Number(req.params.index);
       const lim=Number(req.params.lim);
-      res.status(200).json(await this.contactModel.get(lId,lim));
+      res.status(200).json(await this.contactModel.get(index,lim,req.body));
     } catch (err) {
       console.log(err);
       res.status(400).json(err);
@@ -43,6 +39,13 @@ export class ContactControl{
   delete=async (req: Request, res: Response): Promise<void>=> {
     try {
       res.status(200).json(await this.contactModel.delete(new ObjectId(req.params.id)));
+    } catch (err) {
+      res.status(400).json(err);
+    }
+  }
+  count=async (req: Request, res: Response): Promise<void>=> {
+    try {
+      res.status(200).json({count:await this.contactModel.count(req.body)});
     } catch (err) {
       res.status(400).json(err);
     }
