@@ -28,7 +28,9 @@ export class OneComponent implements OnInit {
   Edit() {
     this.router.navigate(["/contact/edit"], { queryParams: this.contact });
   }
-
+  open(content){
+    
+  }
   ngOnInit(): void {
 
   }

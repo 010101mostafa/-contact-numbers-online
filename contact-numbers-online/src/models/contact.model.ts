@@ -10,10 +10,11 @@ export class ContactModel {
   }
   async get(index: number, limit: number, search: Contact): Promise<Contact[]> {
     try {
-      return await this.contact.find(this.toRE(search))
+      const result= await this.contact.find(this.toRE(search))
         .sort({ "_id": 1 })
         .skip(index)
         .limit(limit).toArray();
+        return result;
     } catch (error) {
       throw error;
     }
@@ -26,12 +27,15 @@ export class ContactModel {
   }
   async edit(_contact: Contact): Promise<void> {
     try {
-      await this.contact.updateOne({ "_id": _contact._id }, { "$set": this.getObj(_contact) })
+      if( 1>(await this.contact.updateOne({ "_id": new ObjectId(_contact._id) }, { "$set": this.getObj(_contact) })).modifiedCount )
+      {
+        throw "the item is not match";
+      }
     } catch (error) {
       throw error;
     }
   }
-  async delete(id: any): Promise<void> {
+  async delete(id: ObjectId): Promise<void> {
     try {
       await this.contact.deleteOne({ "_id": id });
     } catch (error) {
@@ -39,7 +43,9 @@ export class ContactModel {
     }
   }
   async editing(id: any, isEditing: boolean): Promise<void> {
-    await this.contact.updateOne({ "_id": id }, { "$set": { "isEditing": isEditing } });
+    const result=await this.contact.updateOne({ "_id": id }, { "$set": { "isEditing": isEditing } });
+    if( 1>result.modifiedCount )
+        throw "the item is not match";
   }
   async count(search: Contact): Promise<number> {
     return await this.contact.find(this.getObj(search)).count();

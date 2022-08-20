@@ -29,6 +29,7 @@ export class AddComponent implements OnInit , OnDestroy {
     });
   }
   ngOnInit(): void {
+    this.socket = io("ws://localhost:3000");
     this.activateRouter.queryParams
       .subscribe(param => {
         if (param["_id"]) {

@@ -7,5 +7,5 @@ router.get("/", controller.index);
 router.put("/", controller.edit);
 router.delete("/:id", controller.delete);
 router.post("/count",controller.count);
-router.post("/:lId/:lim", controller.get);
+router.post("/:index/:lim", controller.get);
 router.post("/", controller.add);

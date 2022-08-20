@@ -3,12 +3,12 @@
 <td>{{contact.Address}}</td>
 <td>{{contact.Notes}}</td>
 <td>
-    <button class="btu btn-outline-info mx-2" (click)="Edit()" [disabled]="contact.isEditing" >Edit</button>
-    <button class="btu btn-outline-danger mx-2" data-toggle="modal" data-target="#exampleModal"[disabled]="contact.isEditing" >Delete</button>
+    <button class="btu btn-outline-info mx-2" (click)="Edit()" [disabled]="contact.isEditing">Edit</button>
+    <button class="btu btn-outline-danger mx-2" (click)="open(content)" [disabled]="contact.isEditing">Delete</button>
 </td>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<ng-template #content let-modal>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -22,8 +22,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger"  data-dismiss="modal" (click)="Delete()" >delete</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="Delete()">delete</button>
             </div>
         </div>
     </div>
-</div>
+</ng-template>

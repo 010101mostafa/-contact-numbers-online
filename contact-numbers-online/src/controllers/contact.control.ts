@@ -38,8 +38,7 @@ export class ContactControl{
   }
   delete=async (req: Request, res: Response): Promise<void>=> {
     try {
-      const _id= req.params.id;
-      console.log(_id);
+      const _id= new ObjectId(req.params.id);
       res.status(200).json(await this.contactModel.delete(_id));
     } catch (err) {
       res.status(400).json(err);

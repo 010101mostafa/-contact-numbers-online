@@ -19,14 +19,14 @@
 
 <div class="d-flex flex-row justify-content-center p-0 alert ">
     <ul class="pagination m-0">
-        <li class="page-item" [class.disabled]="page==0||Npages<=1" >
-            <a class="page-link" routerLink="/contact/{{page-1}}"  tabindex="-1">Previous</a>
+        <li class="page-item" [class.disabled]="page<=1||Npages<=1" >
+            <a class="page-link" routerLink="/contact/{{page-1}}" [queryParams]="search"  tabindex="-1">Previous</a>
         </li>
         <li class="page-item " [class.active]="page==i" *ngFor="let i of array;" >
-            <a class="page-link"  routerLink="/contact/{{i}}" >{{i}} <span class="sr-only">(current)</span></a>
+            <a class="page-link"  routerLink="/contact/{{i}}" [queryParams]="search" >{{i}} <span class="sr-only">(current)</span></a>
         </li>
-        <li class="page-item" [class.disabled]="page==Npages||Npages<=1" >
-            <a class="page-link"  routerLink="/contact/{{page+1}}" >Next</a>
+        <li class="page-item" [class.disabled]="page>=Npages||Npages<=1" >
+            <a class="page-link"  routerLink="/contact/{{page+1}}" [queryParams]="search" >Next</a>
         </li>
     </ul>
 </div>
