@@ -9,7 +9,8 @@
         </tr>
     </Thead>
     <tbody>
-            <tr app-one class="w-100" ></tr>
+            <tr app-one ></tr>
+            <tr app-one *ngFor="let contact of contacts" [contact]="contact"  ></tr>
         
     </tbody>
 </table>

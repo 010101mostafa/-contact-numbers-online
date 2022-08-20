@@ -13,6 +13,6 @@ export type User = {
   password: string
 };
 export type verifiedUser = {
-  username: String;
-  token: String;
+  username: string;
+  token: string;
 };
