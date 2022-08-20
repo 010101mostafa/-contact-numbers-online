@@ -13,9 +13,15 @@ export class ContactControl{
   }
   get=async (req: Request, res: Response): Promise<void>=>{
     try {
-      const lId=new ObjectId(req.params.lId), lim=Number(req.params.lim);
+      try {
+        var lId=new ObjectId(req.params.lId);
+      } catch (error) {
+        lId=new ObjectId(Number(req.params.lId));
+      }
+      const lim=Number(req.params.lim);
       res.status(200).json(await this.contactModel.get(lId,lim));
     } catch (err) {
+      console.log(err);
       res.status(400).json(err);
     }
   }

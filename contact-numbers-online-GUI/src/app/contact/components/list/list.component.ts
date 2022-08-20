@@ -22,7 +22,7 @@ export class ListComponent implements OnInit {
         this.contactService.get(this.page, 5)
           .subscribe(
             data => { this.contacts = data; },
-            err => { console.log(err); }
+            err => {console.log("error in data reteval :"); console.log(err); }
           );
       });
   }
