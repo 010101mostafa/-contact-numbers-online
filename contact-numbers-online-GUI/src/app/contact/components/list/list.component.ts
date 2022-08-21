@@ -26,6 +26,7 @@ export class ListComponent implements OnInit, OnDestroy {
           Address: param["Address"],
           Notes: param["Notes"]
         } as Contact
+        this.getData();
       });
     this.router.params
       .subscribe(parm => {
