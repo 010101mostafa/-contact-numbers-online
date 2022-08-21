@@ -9,6 +9,7 @@ import { OneComponent } from './components/one/one.component';
 import { ListComponent } from './components/list/list.component';
 import { AuthInterceptor } from './interseptors/auth.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DeleteComponent } from './components/delete/delete.component';
 
 
 
@@ -16,7 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AddComponent,
     OneComponent,
-    ListComponent
+    ListComponent,
+    DeleteComponent
   ],
   imports: [
     CommonModule,

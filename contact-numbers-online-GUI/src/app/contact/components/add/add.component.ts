@@ -62,7 +62,8 @@ export class AddComponent implements OnInit , OnDestroy {
           },
           err => {
             this.error.msg = err.error;
-            this.error.has = true
+            this.error.has = true;
+            console.log(err);
           }
         );
 
@@ -70,12 +71,14 @@ export class AddComponent implements OnInit , OnDestroy {
       this.contactService.update(this.contact)
         .subscribe(
           (data) => {
+            console.log(data);
             this.error.has = false
             this.router.navigateByUrl("/contact");
           },
           err => {
             this.error.msg = err.error;
-            this.error.has = true
+            this.error.has = true;
+            console.log(err);
           }
         );
     }

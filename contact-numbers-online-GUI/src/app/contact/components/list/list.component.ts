@@ -44,7 +44,7 @@ export class ListComponent implements OnInit, OnDestroy {
   getData() {
     this.contactService.get(((this.page - 1) * 5), 5, this.search)
       .subscribe(
-        data => { this.contacts = data; },
+        data => { this.contacts = data;console.log(data) },
         err => { console.log("error in server :"); console.log(err); }
       );
     this.contactService.count(this.search)
@@ -61,5 +61,10 @@ export class ListComponent implements OnInit, OnDestroy {
   searchGo() {
     this._router.navigate(["/contact/"], { queryParams: this.search });
   }
-
+  deleName=""
+  deleId:any;
+  openDelete(contact:Contact){
+    this.deleName=contact.Name;
+    this.deleId=contact._id;
+  }
 }
