@@ -4,6 +4,7 @@ import { connectHub } from "./hub";
 import cors from 'cors';
 
 
+connectHub(5000);
 const app= express();
 const address = "http://localhost:3000/";
 app.listen(3000, (): void => console.log(`starting app on: ${address}`));
@@ -17,8 +18,6 @@ app.use(function(req, res, next) {
   );
   next();
 });
-
-connectHub(app);
 
 app.use(express.json());
 app.use(routers);

@@ -43,7 +43,8 @@ export class ContactModel {
     }
   }
   async editing(id: any, isEditing: boolean): Promise<void> {
-    const result=await this.contact.updateOne({ "_id": id }, { "$set": { "isEditing": isEditing } });
+    const _id= new ObjectId(id)
+    const result=await this.contact.updateOne({ "_id": _id }, { "$set": { "isEditing": isEditing } });
     if( 1>result.modifiedCount )
         throw "the item is not match";
   }

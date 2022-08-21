@@ -16,7 +16,7 @@ export class AddComponent implements OnInit , OnDestroy {
   @Input() contact: Contact = {} as Contact;
   isNew = true;
   error: { msg: string, has: boolean } = { msg: "", has: false };
-  socket = io("ws://localhost:3000");
+  socket = io("http://localhost:5000");
   constructor(private activateRouter: ActivatedRoute,
     private contactService: ContactService,
     private router: Router
@@ -29,7 +29,6 @@ export class AddComponent implements OnInit , OnDestroy {
     });
   }
   ngOnInit(): void {
-    this.socket = io("ws://localhost:3000");
     this.activateRouter.queryParams
       .subscribe(param => {
         if (param["_id"]) {

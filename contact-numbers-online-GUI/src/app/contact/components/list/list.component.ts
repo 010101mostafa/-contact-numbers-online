@@ -16,7 +16,7 @@ export class ListComponent implements OnInit, OnDestroy {
   Npages: number = 0;
   array: number[] = [];
   search: Contact = {} as Contact
-  socket = io("ws://localhost:3000");
+  socket = io("http://localhost:5000/");
   ngOnInit(): void {
     this.router.queryParams
       .subscribe(param => {

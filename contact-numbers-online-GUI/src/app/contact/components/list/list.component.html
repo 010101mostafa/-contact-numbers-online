@@ -13,7 +13,7 @@
         </tr>
     </Thead>
     <tbody>
-        <tr app-one *ngFor="let contact of contacts" [contact]="contact" (deleted)="openDelete($event)"> </tr>
+        <tr app-one [class.bg-secondary]="contact.isEditing" *ngFor="let contact of contacts "  [contact]="contact" (deleted)="openDelete($event)"> </tr>
     </tbody>
 </table>
 
