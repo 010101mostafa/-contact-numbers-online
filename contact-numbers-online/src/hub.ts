@@ -1,4 +1,4 @@
-import { Server } from "socket.io";
+import { Server, Socket } from "socket.io";
 import http from 'http';
 import { ContactModel } from "./models/contact.model";
 
@@ -13,10 +13,10 @@ export function connectHub(port: number) {
     io.on("connection",onConnect);
     app.listen(port)
 }
-const onConnect = (socket) => {
+const onConnect = (socket:Socket) => {
     socket.on("edit", onEdit(socket));
 }
-const onEdit=(socket)=> async (editid: any, isEditing: boolean) => {
+const onEdit=(socket:Socket)=> async (editid: any, isEditing: boolean) => {
     try {
         await contactModel.editing(editid, isEditing);
         io.emit("oneEdit", editid, isEditing)
