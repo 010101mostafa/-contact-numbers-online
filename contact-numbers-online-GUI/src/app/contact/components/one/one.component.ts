@@ -16,7 +16,7 @@ export class OneComponent implements OnInit {
   constructor(private router: Router) {
   }
   Edit() {
-    this.router.navigate(["/contact/edit"], { queryParams: this.contact });
+    this.router.navigate(["/contact/edit"], { state: this.contact });
   }
   open(){
     

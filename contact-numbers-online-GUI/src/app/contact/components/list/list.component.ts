@@ -12,7 +12,7 @@ import { io } from 'socket.io-client';
 export class ListComponent implements OnInit, OnDestroy {
   constructor(private router: ActivatedRoute, private contactService: ContactService, private _router: Router) { }
   contacts: Contact[] = [];
-  page: number = 0;
+  page: number = 1;
   Npages: number = 0;
   array: number[] = [];
   search: Contact = {} as Contact

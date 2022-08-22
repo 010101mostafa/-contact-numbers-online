@@ -3,6 +3,7 @@
 <td>{{contact.Address}}</td>
 <td>{{contact.Notes}}</td>
 <td>
-    <button class="btu btn-outline-info mx-2" (click)="Edit()" [disabled]="contact.isEditing">Edit</button>
-    <button class="btu btn-outline-danger mx-2"  [disabled]="contact.isEditing" data-toggle="modal" data-target="#exampleModal" (click)="open()" >Delete</button>
+    <button class="btn btn-outline-info mx-2" (click)="Edit()" [disabled]="contact.isEditing">
+        Edit</button>
+    <button class="btn btn-outline-danger mx-2"  [disabled]="contact.isEditing" data-toggle="modal" data-target="#exampleModal" (click)="open()" >Delete</button>
 </td>

@@ -29,8 +29,10 @@ export class AddComponent implements OnInit , OnDestroy {
     });
   }
   ngOnInit(): void {
-    this.activateRouter.queryParams
-      .subscribe(param => {
+    this.contact={} as Contact;
+    const param = window.history.state 
+    console.log(param);
+    {
         if (param["_id"]) {
           this.contact = {
             _id: param["_id"],
@@ -41,8 +43,10 @@ export class AddComponent implements OnInit , OnDestroy {
           } as Contact
           this.isNew = false
           this.socket.emit("edit", this.contact._id, true);
-        }
-      });
+          window.history.replaceState({},"","/contact/edit");
+        }else
+          window.history.replaceState({},"","/contact/add");
+      }
   }
   ngOnDestroy(): void {
     this.socket.emit("edit", this.contact._id, false);
